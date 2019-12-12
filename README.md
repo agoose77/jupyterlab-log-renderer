@@ -2,7 +2,29 @@
 
 ![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer/workflows/Build/badge.svg)
 
-A JupyterLab extension.
+A JupyterLab extension to expose the JupyterLab log console to the mimebundle render API.
+
+### Example
+```python
+from IPython.display import display
+
+def log_mimebundle(level, data, metadata=None):
+    display(
+        {
+            "application/vnd.jupyterlab.log": {
+                "level": level,
+                "data": {
+                    "output_type": "display_data",
+                    "data": data,
+                    "metadata": {} or metadata,
+                },
+            }
+        },
+        raw=True,
+    )
+
+log_mimebundle('critical', {'text/html': '<b>Hello world</b>'})
+```
 
 
 ## Requirements
