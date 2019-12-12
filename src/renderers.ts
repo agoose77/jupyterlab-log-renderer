@@ -2,7 +2,9 @@ import {RenderedCommon} from "@jupyterlab/rendermime"
 import {IRenderMime} from '@jupyterlab/rendermime-interfaces';
 import {ILogger, LogLevel} from '@jupyterlab/logconsole'
 import {JSONObject} from '@phosphor/coreutils'
-import { nbformat } from '@jupyterlab/coreutils';
+
+
+type LogType = "text" | "html" | "output";
 
 /**
  * A mime renderer for displaying Markdown with embedded latex.
@@ -30,10 +32,11 @@ export class LogRenderer extends RenderedCommon {
      */
     render(model: IRenderMime.IMimeModel): Promise<void> {
         const modelData = model.data[this.mimeType] as JSONObject;
+        const type = modelData['type'] as LogType;
         const level = modelData['level'] as LogLevel;
-        const data = modelData['data'] as nbformat.IDisplayData|nbformat.IDisplayUpdate;
+        const data = modelData['data'] as any;
 
-        this.logger.log({type:'output', data: data, level: level});
+        this.logger.log({type: type, data: data, level: level});
         return Promise.resolve();
     }
 
