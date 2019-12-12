@@ -1,6 +1,6 @@
 # jupyterlab-log-renderer
 
-![Github Actions Status](https://github.com/my_name/myextension/workflows/Build/badge.svg)
+![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer/workflows/Build/badge.svg)
 
 A JupyterLab extension.
 
