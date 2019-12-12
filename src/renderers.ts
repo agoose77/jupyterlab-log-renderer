@@ -1,4 +1,4 @@
-import {RenderedHTMLCommon} from "@jupyterlab/rendermime"
+import {RenderedCommon} from "@jupyterlab/rendermime"
 import {IRenderMime} from '@jupyterlab/rendermime-interfaces';
 import {ILogger, LogLevel} from '@jupyterlab/logconsole'
 import {JSONObject} from '@phosphor/coreutils'
@@ -7,7 +7,7 @@ import { nbformat } from '@jupyterlab/coreutils';
 /**
  * A mime renderer for displaying Markdown with embedded latex.
  */
-export class LogRenderer extends RenderedHTMLCommon {
+export class LogRenderer extends RenderedCommon {
     /**
      * Construct a new rendered markdown widget.
      *
@@ -37,24 +37,4 @@ export class LogRenderer extends RenderedHTMLCommon {
         return Promise.resolve();
     }
 
-}
-
-/**
- * The namespace for the `renderMarkdown` function statics.
- */
-export namespace renderLog {
-    /**
-     * The options for the `renderMarkdown` function.
-     */
-    export interface IRenderOptions {
-        /**
-         * The Markdown source to render.
-         */
-        source: string;
-
-        /**
-         * Whether the source is trusted.
-         */
-        trusted: boolean;
-    }
 }

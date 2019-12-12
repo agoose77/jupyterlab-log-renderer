@@ -29,6 +29,6 @@ class LogRendererFactory implements IRenderMime.IRendererFactory{
         const logger = this.loggerRegistry.getLogger(notebook.context.path);
         return new LogRenderer(options, logger);
     }
-};
+}
 
 export {LogRendererFactory};
