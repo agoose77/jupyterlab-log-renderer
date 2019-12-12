@@ -8,22 +8,31 @@ A JupyterLab extension to expose the JupyterLab log console to the mimebundle re
 ```python
 from IPython.display import display
 
-def log_mimebundle(level, data, metadata=None):
+def log_mimebundle(level, type, data,):
     display(
         {
             "application/vnd.jupyterlab.log": {
                 "level": level,
-                "data": {
-                    "output_type": "display_data",
-                    "data": data,
-                    "metadata": {} or metadata,
-                },
+                "type": type,
+                "data": data
             }
         },
         raw=True,
     )
 
-log_mimebundle('critical', {'text/html': '<b>Hello world</b>'})
+log_mimebundle('critical", 'text", 'Hello world')
+
+# ---
+log_mimebundle('critical', 'html", '<b>Hello world</b>')
+
+# ---
+data = {'text/html': '<b>Hello world</b>'}
+output = {
+    "output_type": "display_data",
+    "data": data,
+    "metadata": {} ,
+}
+log_mimebundle('critical', 'output", output)
 ```
 
 
