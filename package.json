@@ -1,5 +1,5 @@
 {
-  "name": "jupyterlab-log-renderer",
+  "name": "@agoose77/jupyterlab_log_renderer",
   "version": "0.1.0",
   "description": "A JupyterLab extension to render rich-display objects to the JupyterLab log window.",
   "keywords": [

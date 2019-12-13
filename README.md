@@ -43,7 +43,7 @@ log_mimebundle('critical', 'output", output)
 ## Install
 
 ```bash
-jupyter labextension install jupyterlab-log-renderer
+jupyter labextension install @agoose77/jupyterlab_log_renderer
 ```
 
 ## Contributing
@@ -81,6 +81,6 @@ jupyter lab --watch
 ### Uninstall
 
 ```bash
-jupyter labextension uninstall jupyterlab-log-renderer
+jupyter labextension uninstall @agoose77/jupyterlab_log_renderer
 ```
 

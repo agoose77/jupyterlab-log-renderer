@@ -6,11 +6,11 @@ import {JupyterFrontEnd, JupyterFrontEndPlugin} from '@jupyterlab/application';
 
 
 const extension: JupyterFrontEndPlugin<void> = {
-    id: '@agoose77/jupyterlab-log-renderer',
+    id: '@agoose77/jupyterlab_log_renderer',
     autoStart: true,
     requires: [IRenderMimeRegistry, ILoggerRegistry, INotebookTracker],
     activate: (app: JupyterFrontEnd, registry: IRenderMimeRegistry, loggerRegistry: ILoggerRegistry, tracker: INotebookTracker) => {
-        console.log('JupyterLab extension @agoose77/jupyterlab-log-renderer is activated!');
+        console.log('JupyterLab extension @agoose77/jupyterlab_log_renderer is activated!');
         registry.addFactory(new LogRendererFactory(loggerRegistry, tracker));
     }
 };
