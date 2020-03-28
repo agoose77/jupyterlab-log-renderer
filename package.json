@@ -1,6 +1,6 @@
 {
   "name": "@agoose77/jupyterlab_log_renderer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A JupyterLab extension to render rich-display objects to the JupyterLab log window.",
   "keywords": [
     "jupyter",
@@ -31,13 +31,17 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^1.2.1",
-    "@jupyterlab/logconsole": "^1.0.2",
-    "@jupyterlab/notebook": "^1.2.2"
+    "@jupyterlab/application": "^2.0.2",
+    "@jupyterlab/logconsole": "^2.0.2",
+    "@jupyterlab/nbformat": "^2.0.1",
+    "@jupyterlab/notebook": "^2.0.2",
+    "@jupyterlab/rendermime": "^2.0.2",
+    "@jupyterlab/rendermime-interfaces": "^2.0.1",
+    "@lumino/coreutils": "^1.4.2"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
-    "typescript": "~3.5.2"
+    "rimraf": "^3.0.2",
+    "typescript": "~3.8.3"
   },
   "sideEffects": [
     "style/*.css"

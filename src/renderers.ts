@@ -1,8 +1,8 @@
 import {RenderedCommon} from "@jupyterlab/rendermime"
 import {IRenderMime} from '@jupyterlab/rendermime-interfaces';
 import {IHtmlLog, ILogger, ILogPayloadBase, IOutputLog, ITextLog, LogLevel} from '@jupyterlab/logconsole'
-import {ReadonlyJSONObject} from '@phosphor/coreutils'
-import {nbformat} from '@jupyterlab/coreutils'
+import {ReadonlyJSONObject} from '@lumino/coreutils'
+import * as nbformat from '@jupyterlab/nbformat'
 
 
 /**
