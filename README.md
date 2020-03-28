@@ -19,13 +19,17 @@ def log_mimebundle(level, type, data,):
         },
         raw=True,
     )
-
+```
+#### Simple text log
+```python
 log_mimebundle('critical', 'text', 'Hello world')
-
-# ---
+```
+#### HTML log
+```python
 log_mimebundle('critical', 'html', '<b>Hello world</b>')
-
-# ---
+```
+#### MIME-bundle log
+```python
 data = {'text/html': '<b>Hello world</b>'}
 output = {
     "output_type": "display_data",
