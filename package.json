@@ -25,28 +25,49 @@
     "url": "https://github.com/agoose77/jupyterlab-log-renderer.git"
   },
   "scripts": {
-    "build": "tsc",
-    "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "prepare": "jlpm run clean && jlpm run build",
-    "watch": "tsc -w"
+    "build": "jlpm run build:lib && jlpm run build:labextension:dev",
+    "build:labextension": "jupyter labextension build .",
+    "build:labextension:dev": "jupyter labextension build --development True .",
+    "build:lib": "tsc",
+    "build:prod": "jlpm run build:lib && jlpm run build:labextension",
+    "clean": "jlpm run clean:lib",
+    "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
+    "clean:labextension": "rimraf jupyterlab_log_renderer/static",
+    "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
+    "eslint": "eslint . --ext .ts,.tsx --fix",
+    "eslint:check": "eslint . --ext .ts,.tsx",
+    "install:extension": "jupyter labextension develop --overwrite .",
+    "prepare": "jlpm run clean && jlpm run build:prod",
+    "watch": "run-p watch:src watch:labextension",
+    "watch:labextension": "jupyter labextension watch .",
+    "watch:src": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^2.0.2",
-    "@jupyterlab/logconsole": "^2.0.2",
-    "@jupyterlab/nbformat": "^2.0.1",
-    "@jupyterlab/notebook": "^2.0.2",
-    "@jupyterlab/rendermime": "^2.0.2",
-    "@jupyterlab/rendermime-interfaces": "^2.0.1",
-    "@lumino/coreutils": "^1.4.2"
+    "@jupyterlab/application": "^3.0.0-rc.6",
+    "@jupyterlab/logconsole": "^3.0.0-rc.6",
+    "@jupyterlab/nbformat": "^3.0.0-rc.6",
+    "@jupyterlab/notebook": "^3.0.0-rc.6",
+    "@jupyterlab/rendermime": "^3.0.0-rc.6",
+    "@jupyterlab/rendermime-interfaces": "^3.0.0-rc.6",
+    "@lumino/coreutils": "^1.5.3"
   },
   "devDependencies": {
+    "@jupyterlab/builder": "^3.0.0-rc.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.0",
     "rimraf": "^3.0.2",
-    "typescript": "~3.8.3"
+    "typescript": "~4.0.3"
   },
   "sideEffects": [
     "style/*.css"
   ],
   "jupyterlab": {
-    "extension": true
+    "extension": true,
+    "outputDir": "jupyterlab_log_renderer/static"
   }
 }

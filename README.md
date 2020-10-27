@@ -1,58 +1,27 @@
-# jupyterlab-log-renderer
+# jupyterlab_log_renderer
 
-![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer/workflows/Build/badge.svg)
+![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer.git/workflows/Build/badge.svg)
 
-A JupyterLab extension to expose the JupyterLab log console to the mimebundle render API.
+A JupyterLab extension to render rich-display objects to the JupyterLab log window.
 
-### Example
-```python
-from IPython.display import display
-
-def log_mimebundle(level, type, data,):
-    display(
-        {
-            "application/vnd.jupyterlab.log": {
-                "level": level,
-                "type": type,
-                "data": data
-            }
-        },
-        raw=True,
-    )
-```
-#### Simple text log
-```python
-log_mimebundle('critical', 'text', 'Hello world')
-```
-#### HTML log
-```python
-log_mimebundle('critical', 'html', '<b>Hello world</b>')
-```
-#### MIME-bundle log
-```python
-data = {'text/html': '<b>Hello world</b>'}
-output = {
-    "output_type": "display_data",
-    "data": data,
-    "metadata": {} ,
-}
-log_mimebundle('critical', 'output', output)
-```
 
 
 ## Requirements
 
-* JupyterLab >= 1.0
+* JupyterLab >= 3.0
 
 ## Install
 
 ```bash
-jupyter labextension install @agoose77/jupyterlab_log_renderer
+pip install jupyterlab_log_renderer
 ```
+
 
 ## Contributing
 
-### Install
+### Development install
+
+Note: You will need NodeJS to build the extension package.
 
 The `jlpm` command is JupyterLab's pinned version of
 [yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
@@ -60,31 +29,29 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Move to jupyterlab-log-renderer directory
-# Install dependencies
-jlpm
-# Build Typescript source
-jlpm build
+# Change directory to the jupyterlab_log_renderer directory
+# Install package in development mode
+pip install -e .
 # Link your development version of the extension with JupyterLab
-jupyter labextension link .
-# Rebuild Typescript source after making changes
-jlpm build
-# Rebuild JupyterLab after making any changes
-jupyter lab build
+jupyter labextension develop . --overwrite
+# Rebuild extension Typescript source after making changes
+jlpm run build
 ```
 
-You can watch the source directory and run JupyterLab in watch mode to watch for changes in the extension's source and automatically rebuild the extension and application.
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
 
 ```bash
-# Watch the source directory in another terminal tab
-jlpm watch
-# Run jupyterlab in watch mode in one terminal tab
-jupyter lab --watch
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm run watch
+# Run JupyterLab in another terminal
+jupyter lab
 ```
+
+With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
 
 ### Uninstall
 
 ```bash
+pip uninstall jupyterlab_log_renderer
 jupyter labextension uninstall @agoose77/jupyterlab_log_renderer
 ```
-
