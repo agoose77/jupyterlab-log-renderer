@@ -1,6 +1,6 @@
 # jupyterlab_log_renderer
 
-![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer.git/workflows/Build/badge.svg)
+![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer.git/workflows/Build/badge.svg)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/agoose77/jupyterlab-log-renderer.git/master?urlpath=lab)
 
 A JupyterLab extension to render rich-display objects to the JupyterLab log window.
 
@@ -49,9 +49,14 @@ jupyter lab
 
 With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
 
+By default, the `jlpm run build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
+
+```bash
+jupyter lab build --minimize=False
+```
+
 ### Uninstall
 
 ```bash
 pip uninstall jupyterlab_log_renderer
-jupyter labextension uninstall @agoose77/jupyterlab_log_renderer
 ```

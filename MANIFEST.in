@@ -4,9 +4,10 @@ include pyproject.toml
 include jupyter-config/jupyterlab_log_renderer.json
 
 include package.json
+include install.json
 include ts*.json
 
-graft jupyterlab_log_renderer/static
+graft jupyterlab_log_renderer/labextension
 
 # Javascript files
 graft src
