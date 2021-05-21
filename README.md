@@ -1,6 +1,9 @@
 # jupyterlab_log_renderer
+[![pypi-badge][]][pypi] ![ci-badge][]
 
-![Github Actions Status](https://github.com/agoose77/jupyterlab-log-renderer.git/workflows/Build/badge.svg)
+[pypi-badge]: https://img.shields.io/pypi/v/jupyterlab-log-renderer
+[pypi]: https://pypi.org/project/jupyterlab-log-renderer
+[ci-badge]: https://github.com/agoose77/jupyterlab-log-renderer/actions/workflows/build.yml/badge.svg
 
 A JupyterLab extension to render rich-display objects to the JupyterLab log window.
 
