@@ -1,19 +1,14 @@
-
 import json
-import os.path as osp
+from pathlib import Path
+from importlib_metadata import version
 
-from ._version import __version__
+__all__ = ["__version__"]
+# Distribution name, not package name!
+__version__ = version("jupyterlab-log-renderer")
 
-HERE = osp.abspath(osp.dirname(__file__))
-
-with open(osp.join(HERE, 'static', 'package.json')) as fid:
-    data = json.load(fid)
 
 def _jupyter_labextension_paths():
-    return [{
-        'src': 'static',
-        'dest': data['name']
-    }]
-
-
-
+    here = Path(__file__).parent.resolve()
+    with (here / "labextension" / "package.json").open() as fid:
+        data = json.load(fid)
+    return [{"src": "labextension", "dest": data["name"]}]

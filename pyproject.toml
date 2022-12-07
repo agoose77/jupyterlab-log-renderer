@@ -1,3 +1,73 @@
 [build-system]
-requires = ["jupyter_packaging~=0.7.0", "jupyterlab>=3.0.0rc2,==3.*", "setuptools>=40.8.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = [
+    "hatchling",
+    "jupyterlab>=3.0.0rc2,==3.*",
+    "hatch-nodejs-version>=0.1.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyterlab-log-renderer"
+description = "A JupyterLab extension to render rich-display objects to the JupyterLab log window."
+readme = "README.md"
+requires-python = ">=3.6"
+authors = [
+    { name = "Angus Hollands" },
+]
+keywords = [
+    "Jupyter",
+    "JupyterLab",
+]
+classifiers = [
+    "Framework :: Jupyter",
+    "Framework :: Jupyter :: JupyterLab",
+    "Framework :: Jupyter :: JupyterLab :: 3",
+    "Framework :: Jupyter :: JupyterLab :: Extensions",
+    "Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
+dependencies = [
+    "jupyterlab>=3.0.0rc2,==3.*",
+]
+version = "1.0.0"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/agoose77/jupyterlab-log-renderer.git"
+
+[tool.hatch.version]
+source = "nodejs"
+
+[tool.hatch.build.targets.wheel.shared-data]
+"install.json" = "share/jupyter/labextensions/@agoose77/jupyterlab-log-renderer/install.json"
+"jupyterlab_log_renderer/labextension" = "share/jupyter/labextensions/@agoose77/jupyterlab-log-renderer"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".github",
+]
+artifacts = ["jupyterlab_log_renderer/labextension"]
+
+[tool.hatch.build.hooks.jupyter-builder]
+ensured-targets = [
+    "lib/index.js",
+    "jupyterlab_log_renderer/labextension/package.json",
+]
+dependencies = [
+    "hatch-jupyter-builder>=0.8.1",
+]
+build-function = "hatch_jupyter_builder.npm_builder"
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+path = "."
+build_cmd = "build:prod"
+npm = [
+    "jlpm"
+]
